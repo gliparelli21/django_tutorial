@@ -1,4 +1,7 @@
+from time import timezone
+
 from django.shortcuts import render, get_object_or_404
+from django.utils import timezone
 from django.template import loader
 from django.http import Http404, HttpResponse, HttpResponseRedirect
 from .models import Question, Choice
@@ -65,3 +68,12 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
+    
+def get_queryset(self):
+    """
+    Return the last five published questions (not including those set to be
+    published in the future).
+    """
+    return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[
+        :5
+    ]
