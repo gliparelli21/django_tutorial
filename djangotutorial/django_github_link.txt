@@ -1,0 +1,1 @@
+https://github.com/gliparelli21/django_tutorial
