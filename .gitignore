@@ -1,1 +1,4 @@
 djangotutorial/gunicorn.ctl
+djangotutorial/.env.ec2
+djangotutorial/.env
+djangotutorial/*.sqlite3
